@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { FC } from "react";
-import { Helmet } from "react-helmet";
-import { graphql, useStaticQuery } from "gatsby";
-import { EMPTY_ARRAY } from "../utils";
+import React, { FC } from 'react'
+import { Helmet } from 'react-helmet'
+import { graphql, useStaticQuery } from 'gatsby'
+import { EMPTY_ARRAY } from '../utils'
 
-type Meta = JSX.IntrinsicElements["meta"]
+type Meta = JSX.IntrinsicElements['meta']
 
 type Props = {
   title: string
