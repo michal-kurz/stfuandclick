@@ -1,7 +1,9 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from 'react'
+import applyConfig from './src/config'
+import AppRoot from './src/components/layouts/AppRoot'
 
-// You can delete this file if you're not using it
+export const onClientEntry = () => {
+  applyConfig()
+}
+
+export const wrapRootElement = ({ element }) => <AppRoot>{element}</AppRoot>

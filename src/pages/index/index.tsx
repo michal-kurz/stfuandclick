@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { css } from '@emotion/core'
 
-import SEO from '../components/seo'
-import { getLeaderboard, recordClick } from '../requests'
+import SEO from '../../components/seo'
+import { getLeaderboard, recordClick } from '../../requests'
+import Layout from '../../components/layouts/MainLayout/Layout'
+import TopQuote from './TopQuote'
 
 const IndexPage = () => {
   useEffect(() => {
@@ -18,15 +19,7 @@ const IndexPage = () => {
   return (
     <>
       <SEO title="Home" />
-      <h1
-        css={css`
-          color: orange;
-        `}
-      >
-        Hi people
-      </h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
+      <Layout topSectionContent={<TopQuote />}></Layout>
     </>
   )
 }

@@ -31,6 +31,9 @@ const query = graphql`
   }
 `
 
+const robotoUrl =
+  'https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap'
+
 const SEO: FC<Props> = ({ description, lang, meta = EMPTY_ARRAY, title }) => {
   const { site } = useStaticQuery(query)
 
@@ -53,6 +56,7 @@ const SEO: FC<Props> = ({ description, lang, meta = EMPTY_ARRAY, title }) => {
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[...baseMeta, ...meta]}
+      link={[{ rel: 'stylesheet', href: robotoUrl }]}
     />
   )
 }
