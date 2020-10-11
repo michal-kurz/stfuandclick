@@ -1,9 +1,10 @@
 import { css } from '@emotion/core'
-import { ThemedCssCreator } from '../../../theming'
 
-export const footerCss: ThemedCssCreator = css`
+export const footerCss = css`
+  font-style: italic;
   width: 100%;
   padding: 15px 0;
+  margin-top: 30px;
   font-size: 21px;
   text-align: center;
 `

@@ -22,13 +22,3 @@ export const mainAreaCss = css`
   justify-content: center;
   align-items: center;
 `
-
-export const mainFrameCss: ThemedCssCreator = theme => css`
-  border-style: solid;
-  border-color: ${theme.colors.primary};
-  border-width: 5px;
-  border-radius: 8px;
-  width: 800px;
-  height: 800px;
-  overflow: hidden;
-`

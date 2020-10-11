@@ -6,7 +6,9 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.28",
+    "@types/node-uuid": "^0.0.28",
     "@types/react-helmet": "^6.1.0",
+    "@types/react-redux": "^7.1.9",
     "axios": "^0.19.2",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.24.26",
@@ -20,10 +22,17 @@
     "gatsby-source-filesystem": "^2.3.23",
     "gatsby-transformer-sharp": "^2.5.12",
     "immer": "^7.0.7",
+    "node-uuid": "^1.4.8",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "ts-action": "^11.0.0",
+    "ts-action-immer": "^3.0.3"
   },
   "devDependencies": {
     "prettier": "2.0.5"

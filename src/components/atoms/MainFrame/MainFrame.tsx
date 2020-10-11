@@ -1,16 +1,19 @@
 import React, { FC } from 'react'
-import { footerCss } from './styles'
+import { bottomPartCss, frameCss, topPartCss } from './styles'
+import Leaderboard from '../Leaderboard'
+import MotivationalLine from '../MotivationalLine'
 
 export type Props = {}
 
-const MainFrame: FC<Props> = () => {
+const MainFrame: FC<Props> = ({ children }) => {
   return (
-    <div css={footerCss}>
-      If you don't like this page, it's{' '}
-      <a href="https://www.applifting.cz/" target="_blank">
-        Applifting
-      </a>
-      's fault
+    <div css={frameCss}>
+      <div css={topPartCss}>{children} </div>
+
+      <div css={bottomPartCss}>
+        <Leaderboard />
+        <MotivationalLine />
+      </div>
     </div>
   )
 }

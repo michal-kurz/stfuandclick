@@ -5,8 +5,8 @@ export const ribbonCss: ThemedCssCreator = ({ colors }) => css`
   width: 100%;
   color: white;
   letter-spacing: 1px;
-  padding: 7px 0;
-  font-size: 25px;
+  padding: 12px 0;
+  font-size: 30px;
   background-color: ${colors.primary};
   text-align: center;
   font-weight: bold;

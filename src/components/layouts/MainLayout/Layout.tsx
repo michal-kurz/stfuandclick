@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-import { mainAreaCss, mainFrameCss, pageContentCss, pageWrapperCss, topSectionCss } from './styles'
+import { mainAreaCss, pageContentCss, pageWrapperCss, topSectionCss } from './styles'
 import TopRibbon from '../../atoms/TopRibbon'
 import Footer from '../../atoms/Footer'
 
@@ -14,7 +14,7 @@ const Layout: FC<Props> = ({ topSectionContent, children }) => {
       <div css={pageContentCss}>
         <div css={topSectionCss}>{topSectionContent}</div>
         <div css={mainAreaCss}>
-          <div css={mainFrameCss}>{children}</div>
+          <div>{children}</div>
         </div>
       </div>
       <Footer />

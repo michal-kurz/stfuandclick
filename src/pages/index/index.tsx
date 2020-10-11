@@ -4,6 +4,7 @@ import SEO from '../../components/seo'
 import { getLeaderboard, recordClick } from '../../requests'
 import Layout from '../../components/layouts/MainLayout/Layout'
 import TopQuote from './TopQuote'
+import MainFrame from '../../components/atoms/MainFrame'
 
 const IndexPage = () => {
   useEffect(() => {
@@ -19,7 +20,9 @@ const IndexPage = () => {
   return (
     <>
       <SEO title="Home" />
-      <Layout topSectionContent={<TopQuote />}></Layout>
+      <Layout topSectionContent={<TopQuote />}>
+        <MainFrame></MainFrame>
+      </Layout>
     </>
   )
 }
