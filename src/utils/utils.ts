@@ -41,3 +41,8 @@ export function getIntRadiusWithinConstraints(
   if (!isRangeTooBigToFit) return shiftedRange
   return shiftedRange.filter(n => n >= min && n <= max)
 }
+
+export const applyThousandsSeparator = (num: number | string, separator = ' ') => {
+  const stringified = String(num)
+  return stringified.replace(/\B(?=(\d{3})+(?!\d))/g, separator)
+}

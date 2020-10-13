@@ -28,16 +28,21 @@ export const headerRowCss = css`
 `
 
 export const rankCss = css`
-  width: 65px;
+  min-width: 65px;
   justify-content: flex-end;
 `
 
 export const teamNameCss = css`
   margin-left: 35px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   flex-grow: 1;
 `
 
 export const clicksCss = css`
-  width: fit-content;
+  min-width: fit-content;
+  text-align: right;
   margin-right: 35px;
+  margin-left: 15px;
 `

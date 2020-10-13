@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import { mainAreaCss, pageContentCss, pageWrapperCss, topSectionCss } from './styles'
-import TopRibbon from '../../atoms/TopRibbon'
-import Footer from '../../atoms/Footer'
+import TopRibbon from '../../bricks/TopRibbon'
+import Footer from '../../bricks/Footer'
 
 export type Props = {
   topSectionContent?: ReactNode

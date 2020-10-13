@@ -7,11 +7,12 @@ export const frameCss: ThemedCssCreator = theme => css`
   border-width: 9px;
   border-radius: 18px;
   width: 900px;
-  height: 1000px;
+  height: 1075px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   background-color: white;
+  box-sizing: border-box;
 `
 
 export const topPartCss = css`

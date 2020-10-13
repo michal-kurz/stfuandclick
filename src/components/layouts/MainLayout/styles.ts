@@ -17,7 +17,7 @@ export const topSectionCss = css`
   margin-top: 80px;
 `
 export const mainAreaCss = css`
-  margin-top: 80px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

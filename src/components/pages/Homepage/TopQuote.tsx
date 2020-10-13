@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Quote from '../../components/atoms/Quote'
+
+import Quote from '../../bricks/Quote'
 
 const quoteWrapperCss = css`
   width: 100%;

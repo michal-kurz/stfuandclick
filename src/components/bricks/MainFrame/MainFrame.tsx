@@ -3,15 +3,17 @@ import { bottomPartCss, frameCss, topPartCss } from './styles'
 import Leaderboard from '../Leaderboard'
 import MotivationalLine from '../MotivationalLine'
 
-export type Props = {}
+export type Props = {
+  teamName?: string
+}
 
-const MainFrame: FC<Props> = ({ children }) => {
+const MainFrame: FC<Props> = ({ children, teamName }) => {
   return (
     <div css={frameCss}>
       <div css={topPartCss}>{children} </div>
 
       <div css={bottomPartCss}>
-        <Leaderboard />
+        <Leaderboard teamName={teamName} />
         <MotivationalLine />
       </div>
     </div>
