@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 export const buttonCss: ThemedCssCreator = theme => css`
   color: white;
   background-color: ${theme.colors.primary};
+  cursor: pointer;
   border-radius: 11px;
   display: flex;
   justify-content: center;

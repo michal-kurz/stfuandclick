@@ -2,6 +2,7 @@ import { ThemedCssCreator } from '../../../theming'
 import { css } from '@emotion/core'
 
 export const frameCss: ThemedCssCreator = theme => css`
+  marin-top: 7px;
   border-style: solid;
   border-color: ${theme.colors.primary};
   border-width: 9px;

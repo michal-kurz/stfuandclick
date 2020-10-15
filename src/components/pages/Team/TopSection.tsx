@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { css } from '@emotion/core'
 import { useLocation } from '@reach/router'
+import Input from '../../bricks/Input'
 
 const wrapperCss = css`
   width: 100%;
@@ -20,15 +21,7 @@ const sublineCss = css`
 `
 
 const inputCss = css`
-  border: 1px solid #888;
-  border-radius: 8px;
   margin-left: 20px;
-  padding: 5px 10px;
-  width: 320px;
-  height: 35px;
-  color: #222;
-  font-size: 25px;
-  margin-top: 2px;
 `
 
 type Props = {
@@ -45,7 +38,7 @@ const TopSection: FC<Props> = ({ teamName }) => {
       </div>
       <div css={sublineCss}>
         <i>Too lazy to click? Let your pals click for you:</i>
-        <input css={inputCss} readOnly value={location.href} />
+        <Input css={inputCss} readOnly value={location.href} />
       </div>
     </div>
   )

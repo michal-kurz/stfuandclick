@@ -7,6 +7,7 @@ const quoteWrapperCss = css`
   width: 100%;
   display: flex;
   justify-content: center;
+  font-size: 27px;
 `
 
 const TopQuote = () => (
