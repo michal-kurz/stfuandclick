@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{GnSH:function(n,t,e){"use strict";e.r(t);var u=e("hGi/"),r=e("q1tI"),i=e.n(r),c=e("qKvR");t.default=function(n){return Object(u.a)(n),Object(c.d)(i.a.Fragment,null,"TEST")}},"hGi/":function(n,t,e){"use strict";function u(n){if(null==n)throw new TypeError("Cannot destructure undefined")}e.d(t,"a",(function(){return u}))}}]);
+//# sourceMappingURL=component---src-pages-test-tsx-199fd88ce39dda938dfb.js.map
