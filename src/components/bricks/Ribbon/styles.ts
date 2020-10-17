@@ -57,28 +57,29 @@ export const makeCenterCss = (width = '200px', length = '70px'): ThemedCssCreato
 // Ribbon.tsx
 export const containerCss = css`
   position: relative;
-  height: 90px;
-  width: 380px;
+  height: 85px;
+  width: 395px;
 `
 export const leftRibbonCss = css`
   z-index: 1;
   position: absolute;
   left: 0;
-  top: 20px;
-  border-radius: 1px;
+  top: 15px;
+  border-radius: 3px;
 `
 export const rightRibbonCss = css`
   z-index: 1;
   position: absolute;
-  left: 280px;
-  top: 20px;
-  border-radius: 1px;
+  left: 295px;
+  top: 15px;
+  border-radius: 3px;
 `
 export const centerCss = css`
   z-index: 2;
-  width: 220px;
+  letter-spacing: 1px;
+  width: 235px;
   position: absolute;
-  left: 85px;
+  left: 80px;
   top: 0px;
-  border-radius: 1px;
+  border-radius: 3px;
 `

@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'STFU and click!',
-    description: '',
-    author: '@gatsbyjs',
+    description: "It's really simple, you just have to click as fast as you can!",
+    author: '@michal-kurz',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

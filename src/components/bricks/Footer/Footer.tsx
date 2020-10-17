@@ -5,7 +5,7 @@ export type Props = {}
 
 const Footer: FC<Props> = () => (
   <div css={footerCss}>
-    If you don&apos;t like this page, it&apos;s&#32;
+    If you don't like this page, it's{' '}
     <a href="https://www.applifting.cz/" target="_blank" rel="noreferrer">
       Applifting
     </a>
