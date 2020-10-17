@@ -31,8 +31,7 @@ const query = graphql`
   }
 `
 
-const robotoUrl =
-  'https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap'
+const robotoUrl = 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap'
 
 const SEO: FC<Props> = ({ description, lang, meta = EMPTY_ARRAY, title }) => {
   const { site } = useStaticQuery(query)
@@ -40,14 +39,14 @@ const SEO: FC<Props> = ({ description, lang, meta = EMPTY_ARRAY, title }) => {
   const metaDescription = description || site.siteMetadata.description
 
   const baseMeta: Meta[] = [
-    { name: `description`, content: metaDescription },
-    { property: `og:title`, content: title },
-    { property: `og:description`, content: metaDescription },
-    { property: `og:type`, content: `website` },
-    { name: `twitter:card`, content: `summary` },
-    { name: `twitter:creator`, content: site.siteMetadata.author },
-    { name: `twitter:title`, content: title },
-    { name: `twitter:description`, content: metaDescription },
+    { name: 'description', content: metaDescription },
+    { property: 'og:title', content: title },
+    { property: 'og:description', content: metaDescription },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:creator', content: site.siteMetadata.author },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: metaDescription },
   ]
 
   return (

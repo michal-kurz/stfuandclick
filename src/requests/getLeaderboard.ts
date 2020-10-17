@@ -3,10 +3,12 @@ import { Team } from './types'
 
 type ResponseData = Team[]
 
-const getUrl = () => `/leaderboard`
+const getUrl = () => '/leaderboard'
 
-export const getLeaderboard = () =>
-  axios.request<ResponseData>({
+// eslint-disable-next-line import/prefer-default-export
+export const getLeaderboard = () => {
+  return axios.request<ResponseData>({
     url: getUrl(),
     method: 'get',
   })
+}

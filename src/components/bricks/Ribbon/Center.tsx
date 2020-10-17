@@ -6,13 +6,11 @@ export type Props = {
   className?: string
 }
 
-const Center: FC<Props> = ({ text, className }) => {
-  return (
-    <div css={makeCenterCss()} className={className}>
-      {text}
-    </div>
-  )
-}
+const Center: FC<Props> = ({ text, className }) => (
+  <div css={makeCenterCss()} className={className}>
+    {text}
+  </div>
+)
 
 export default Center
 export type CenterProps = Props

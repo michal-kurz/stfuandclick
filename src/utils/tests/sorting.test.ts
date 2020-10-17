@@ -31,7 +31,7 @@ describe('sortLeaderboard() & getTeamNamesByOrder()', () => {
     // cba to write test for isLeaderboardLegit, too :)
     const isLeaderboardLegit = () => {
       let prevClicks = Infinity
-      for (let i = 0; i < mockLeaderboard.length; i++) {
+      for (let i = 0; i < mockLeaderboard.length; i += 1) {
         const currentTeamRecord = leaderboard[i]
         const { order, clicks } = currentTeamRecord
         if (clicks > prevClicks) return false

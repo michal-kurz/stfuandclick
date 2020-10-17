@@ -1,5 +1,5 @@
-import { ThemedCssCreator } from '../../../theming'
 import { css } from '@emotion/core'
+import { ThemedCssCreator } from '../../../theming'
 
 export const frameCss: ThemedCssCreator = theme => css`
   marin-top: 7px;

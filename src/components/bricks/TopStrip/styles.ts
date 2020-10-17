@@ -1,6 +1,7 @@
 import { css } from '@emotion/core'
 import { ThemedCssCreator } from '../../../theming'
 
+// eslint-disable-next-line import/prefer-default-export
 export const ribbonCss: ThemedCssCreator = ({ colors }) => css`
   width: 100%;
   color: white;

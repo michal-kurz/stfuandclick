@@ -7,18 +7,16 @@ export type Props = {
   teamName?: string
 }
 
-const MainFrame: FC<Props> = ({ children, teamName }) => {
-  return (
-    <div css={frameCss}>
-      <div css={topPartCss}>{children} </div>
+const MainFrame: FC<Props> = ({ children, teamName }) => (
+  <div css={frameCss}>
+    <div css={topPartCss}>{children}</div>
 
-      <div css={bottomPartCss}>
-        <Leaderboard teamName={teamName} />
-        <MotivationalLine />
-      </div>
+    <div css={bottomPartCss}>
+      <Leaderboard teamName={teamName} />
+      <MotivationalLine />
     </div>
-  )
-}
+  </div>
+)
 
 export default MainFrame
 export type TopRibbonProps = Props

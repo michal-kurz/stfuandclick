@@ -13,8 +13,8 @@ const quoteWrapperCss = css`
 const TopQuote = () => (
   <div css={quoteWrapperCss}>
     <Quote
-      quote={`"It's really simple, you just have to click as fast as you can."`}
-      author={'anonymous'}
+      quote={'"It\'s really simple, you just have to click as fast as you can."'}
+      author="anonymous"
     />
   </div>
 )

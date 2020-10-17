@@ -16,11 +16,11 @@ const initialState: SessionSlice = {
 const sessionReducer = reducer(
   initialState,
   on(recordClick, state => {
-    state.sessionClicks++
+    state.sessionClicks += 1
   }),
   on(undoClick, state => {
-    state.sessionClicks--
-  })
+    state.sessionClicks -= 1
+  }),
 )
 
 export default sessionReducer

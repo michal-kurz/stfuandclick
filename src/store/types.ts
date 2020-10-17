@@ -5,6 +5,7 @@ import { store } from './configureStore'
 export type RootState = ReturnType<typeof store.getState>
 
 // I use the Promise.resolve.then() trick to be able to await the thunk
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ThunkCreator<Params, PromiseType = any> = (
-  params: Params
+  params: Params,
 ) => ThunkAction<Promise<PromiseType>, RootState, null, Action>

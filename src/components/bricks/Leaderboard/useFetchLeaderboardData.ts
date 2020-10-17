@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
-import * as TC from '../../../store/leaderboard/thunkCreators'
 import { useEffect } from 'react'
+import * as TC from '../../../store/leaderboard/thunkCreators'
 
 const useFetchData = () => {
   const dispatch = useDispatch()

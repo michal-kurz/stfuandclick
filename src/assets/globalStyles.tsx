@@ -10,4 +10,6 @@ const globalCss = css`
   }
 `
 
-export const GlobalStyles = () => <Global styles={globalCss} />
+const GlobalStyles = () => <Global styles={globalCss} />
+
+export default GlobalStyles

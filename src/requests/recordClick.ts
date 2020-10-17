@@ -3,10 +3,11 @@ import { ClickScore } from './types'
 
 type ResponseData = ClickScore
 
-const getUrl = () => `/klik`
+const getUrl = () => '/klik'
 
-export const recordClick = (team: string, session: string) =>
-  axios.request<ResponseData>({
+// eslint-disable-next-line import/prefer-default-export
+export const recordClick = (team: string, session: string) => {
+  return axios.request<ResponseData>({
     url: getUrl(),
     method: 'post',
     data: {
@@ -14,3 +15,4 @@ export const recordClick = (team: string, session: string) =>
       session,
     },
   })
+}

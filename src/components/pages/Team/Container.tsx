@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
-import Team from './Team'
 import { useDispatch } from 'react-redux'
+import { RouteComponentProps } from '@reach/router'
+import Team from './Team'
 
 import * as GTC from '../../../store/_global/thunkCreators'
-import { RouteComponentProps } from '@reach/router'
 
 export type ContainerProps = RouteComponentProps<{
   teamName: string

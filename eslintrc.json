@@ -17,25 +17,38 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint",
-    "prettier"
+    "@typescript-eslint"
   ],
   "extends": [
     "plugin:react/recommended",
     "airbnb",
     "airbnb/hooks",
-    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "react/jsx-one-expression-per-line": ["off"],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": { "delimiter": "none" },
+      "singleline": { "delimiter": "semi", "requireLast": false }
+    }],
+    "object-curly-newline": ["off"],
+    "operator-linebreak":  ["error", "before", { "overrides":  {"=": "after"} }],
+    "max-len": ["error", {
+      "ignoreComments": true,
+      "code": 100
+    }],
+    "arrow-body-style": ["off"],
+    "arrow-parens": ["error", "as-needed"],
+    "no-param-reassign": ["warn", {
+      "props": true,
+      "ignorePropertyModificationsFor": ["draft", "state", "acc", "accumulator"]
+    }],
     "spaced-comment": [
       "error",
       "always",
       {
-        "markers": [
-          "/"
-        ]
+        "markers": ["/"]
       }
     ],
     "react/prop-types": "off",
@@ -49,15 +62,11 @@
         "tsx": "never"
       }
     ],
-    "semi": [
-      "error",
-      "never"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "prettier/prettier": "error",
+    "semi": ["error", "never"],
+    "quotes": ["error", "single", {
+      "avoidEscape": true,
+      "allowTemplateLiterals": true
+    }],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "react/jsx-filename-extension": [
@@ -72,10 +81,6 @@
       }
     ],
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-fragments": [
-      "error",
-      "element"
-    ],
     "react/destructuring-assignment": "off",
     "react-hooks/exhaustive-deps": "warn",
     "no-unused-expressions": [

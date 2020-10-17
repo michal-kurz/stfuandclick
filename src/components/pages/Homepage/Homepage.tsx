@@ -16,34 +16,32 @@ type Props = RouteComponentProps & {
   setTeamName: (newName: string) => void
 }
 
-const Homepage: FC<Props> = ({ recordClick, teamName, setTeamName }) => {
-  return (
-    <>
-      <SEO title="Home" />
-      <Layout topSectionContent={<TopQuote />}>
-        <MainFrame>
-          <div css={topStripCss}>
-            <div css={inputWrapper}>
-              Enter your team name:
-              <Input
-                css={inputCss}
-                value={teamName}
-                onChange={e => setTeamName(e.target.value)}
-                placeholder="Your mom"
-              />
-            </div>
-            <div css={buttonWrapperCss}>
-              <ClickButton onClick={recordClick} />
-            </div>
+const Homepage: FC<Props> = ({ recordClick, teamName, setTeamName }) => (
+  <>
+    <SEO title="Home" />
+    <Layout topSectionContent={<TopQuote />}>
+      <MainFrame>
+        <div css={topStripCss}>
+          <div css={inputWrapper}>
+            Enter your team name:
+            <Input
+              css={inputCss}
+              value={teamName}
+              onChange={e => setTeamName(e.target.value)}
+              placeholder="Your mom"
+            />
           </div>
-          <div css={ribbonContainerCss}>
-            <Ribbon />
+          <div css={buttonWrapperCss}>
+            <ClickButton onClick={recordClick} />
           </div>
-        </MainFrame>
-      </Layout>
-    </>
-  )
-}
+        </div>
+        <div css={ribbonContainerCss}>
+          <Ribbon />
+        </div>
+      </MainFrame>
+    </Layout>
+  </>
+)
 
 export default Homepage
 export type HomepageProps = Props

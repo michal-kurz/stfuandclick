@@ -1,12 +1,12 @@
+import { css } from '@emotion/core'
 import { FringeOrientation } from './types'
 import { ThemedCssCreator } from '../../../theming'
-import { css } from '@emotion/core'
 
 // Fringe.tsx
 export const makeFringeCss = (
   orientation: FringeOrientation,
   width = '70px',
-  length = '100px'
+  length = '100px',
 ): ThemedCssCreator => theme => {
   const { Left, Right } = FringeOrientation
 

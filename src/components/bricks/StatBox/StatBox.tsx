@@ -7,14 +7,12 @@ export type Props = {
   className?: string
 }
 
-const StatBox: FC<Props> = ({ label, value, className }) => {
-  return (
-    <div css={wrapperCss} className={className}>
-      <div css={labelCss}>{label}</div>
-      <div css={valueCss}>{value}</div>
-    </div>
-  )
-}
+const StatBox: FC<Props> = ({ label, value, className }) => (
+  <div css={wrapperCss} className={className}>
+    <div css={labelCss}>{label}</div>
+    <div css={valueCss}>{value}</div>
+  </div>
+)
 
 export default StatBox
 export type ClickButtonProps = Props

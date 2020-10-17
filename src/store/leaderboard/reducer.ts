@@ -51,7 +51,7 @@ const leaderboardReducer = reducer(
       }
     }
 
-    state.teamsByName[teamName].clicks++
+    state.teamsByName[teamName].clicks += 1
 
     const sortedLeaderboard = sortLeaderboard(Object.values(state.teamsByName))
     const teamNamesByOrder = getTeamNamesByOrder(sortedLeaderboard)
@@ -75,7 +75,7 @@ const leaderboardReducer = reducer(
       return
     }
 
-    state.teamsByName[teamName].clicks--
+    state.teamsByName[teamName].clicks -= 1
 
     const sortedLeaderboard = sortLeaderboard(Object.values(state.teamsByName))
     const teamNamesByOrder = getTeamNamesByOrder(sortedLeaderboard)
@@ -84,7 +84,7 @@ const leaderboardReducer = reducer(
     teamNamesByOrder.forEach((name, index) => {
       state.teamsByName[name].order = index + 1
     })
-  })
+  }),
 )
 
 export default leaderboardReducer

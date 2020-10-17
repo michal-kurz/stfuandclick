@@ -4,8 +4,9 @@ import { getIsLeaderboardFetching } from './selectors'
 import { getLeaderboard } from '../../requests'
 import { handleRequestError } from '../../utils'
 
-export const fetchLeaderboard: ThunkCreator<void> = () => (dispatch, getState) =>
-  Promise.resolve().then(async () => {
+// eslint-disable-next-line import/prefer-default-export
+export const fetchLeaderboard: ThunkCreator<void> = () => (dispatch, getState) => {
+  return Promise.resolve().then(async () => {
     const isFetching = getIsLeaderboardFetching(getState())
     if (isFetching) return
 
@@ -18,3 +19,4 @@ export const fetchLeaderboard: ThunkCreator<void> = () => (dispatch, getState) =
         dispatch(AC.getLeaderboardError())
       })
   })
+}

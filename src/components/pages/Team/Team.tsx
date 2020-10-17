@@ -13,20 +13,18 @@ type Props = {
   teamName: string
 }
 
-const Team: FC<Props> = ({ teamName, recordClick }) => {
-  return (
-    <>
-      <SEO title={teamName ?? 'The nameless team q:^)'} />
-      <Layout topSectionContent={<TopSection teamName={teamName} />}>
-        <MainFrame teamName={teamName}>
-          <div css={buttonContainerCss}>
-            <ClickButton onClick={recordClick} />
-          </div>
-          <Counters teamName={teamName} />
-        </MainFrame>
-      </Layout>
-    </>
-  )
-}
+const Team: FC<Props> = ({ teamName, recordClick }) => (
+  <>
+    <SEO title={teamName ?? 'The nameless team q:^)'} />
+    <Layout topSectionContent={<TopSection teamName={teamName} />}>
+      <MainFrame teamName={teamName}>
+        <div css={buttonContainerCss}>
+          <ClickButton onClick={recordClick} />
+        </div>
+        <Counters teamName={teamName} />
+      </MainFrame>
+    </Layout>
+  </>
+)
 
 export default Team

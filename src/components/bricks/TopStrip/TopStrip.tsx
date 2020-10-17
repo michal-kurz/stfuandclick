@@ -3,9 +3,7 @@ import { ribbonCss } from './styles'
 
 export type Props = {}
 
-const TopStrip: FC<Props> = () => {
-  return <div css={ribbonCss}>STFUANDCLICK.COM</div>
-}
+const TopStrip: FC<Props> = () => <div css={ribbonCss}>STFUANDCLICK.COM</div>
 
 export default TopStrip
 export type TopRibbonProps = Props

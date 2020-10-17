@@ -11,8 +11,9 @@ type RecordClickParams = {
 
 type RecordClick = ThunkCreator<RecordClickParams>
 
-export const recordClick: RecordClick = ({ teamName }) => (dispatch, getState) =>
-  Promise.resolve().then(async () => {
+// eslint-disable-next-line import/prefer-default-export
+export const recordClick: RecordClick = ({ teamName }) => (dispatch, getState) => {
+  return Promise.resolve().then(async () => {
     dispatch(AC.recordClick({ teamName }))
 
     const sessionString = getSessionString(getState())
@@ -24,3 +25,4 @@ export const recordClick: RecordClick = ({ teamName }) => (dispatch, getState) =
 
     await R.recordClick(teamName, sessionString).catch(onError)
   })
+}

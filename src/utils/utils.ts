@@ -12,7 +12,7 @@ type Constraints = { min?: number; max?: number }
 export function getIntRadiusWithinConstraints(
   radius: number,
   _int: number,
-  constraints?: Constraints
+  constraints?: Constraints,
 ) {
   let int = _int
   const { min = 0, max = Infinity } = constraints || {}

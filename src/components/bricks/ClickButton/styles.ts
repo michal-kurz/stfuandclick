@@ -1,6 +1,7 @@
-import { ThemedCssCreator } from '../../../theming'
 import { css } from '@emotion/core'
+import { ThemedCssCreator } from '../../../theming'
 
+// eslint-disable-next-line import/prefer-default-export
 export const buttonCss: ThemedCssCreator = theme => css`
   color: white;
   background-color: ${theme.colors.primary};

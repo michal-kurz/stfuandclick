@@ -1,5 +1,5 @@
-import { RootState as RS } from '../types'
 import { createSelector } from 'reselect'
+import { RootState as RS } from '../types'
 import { getIntRadiusWithinConstraints } from '../../utils'
 
 export const getLeaderboardSlice = (s: RS) => s.leaderboard
@@ -30,18 +30,19 @@ export const getLeaderboardForTeamName = createSelector(
       })
 
       return positionsToDisplay.map((position: number) => {
-        const teamName = teamNamesByOrder[position - 1]
-        return teamsByName[teamName]
+        const teamNameAtPosition = teamNamesByOrder[position - 1]
+        return teamsByName[teamNameAtPosition]
       })
     } catch (e) {
       // Jestli mě nepodrazí API, tak by se nemělo stát...
       return []
     }
-  }
+  },
 )
 
-export const getTeamClicks = (s: RS, teamName: string): number | undefined =>
-  getTeamsByName(s)[teamName]?.clicks
+export const getTeamClicks = (s: RS, teamName: string): number | undefined => {
+  return getTeamsByName(s)[teamName]?.clicks
+}
 
 const passNumber = (s: RS, n: number) => n
 export const getTopOfLeaderboard = createSelector(
@@ -51,5 +52,5 @@ export const getTopOfLeaderboard = createSelector(
   (teamsByName, teamNamesByOrder, numberOfEntries) => {
     const teamNamesToDisplay = teamNamesByOrder.slice(0, numberOfEntries)
     return teamNamesToDisplay.map(name => teamsByName[name])
-  }
+  },
 )

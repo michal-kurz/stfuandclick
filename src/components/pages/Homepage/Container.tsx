@@ -1,14 +1,14 @@
 import React, { FC, useState } from 'react'
-import { navigate } from '@reach/router'
-import Homepage, { HomepageProps } from './Homepage'
+import { navigate, RouteComponentProps } from '@reach/router'
 import { useDispatch } from 'react-redux'
+import Homepage from './Homepage'
 
 import * as GTC from '../../../store/_global/thunkCreators'
 import { getTeamPath } from '../../../utils'
 
-export type ContainerProps = Omit<HomepageProps, ''>
+export type ContainerProps = RouteComponentProps
 
-const Container: FC<ContainerProps> = ({}) => {
+const Container: FC<ContainerProps> = () => {
   const dispatch = useDispatch()
   const [teamName, setTeamName] = useState('')
 

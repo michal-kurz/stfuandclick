@@ -7,13 +7,11 @@ export type Props = {
   className?: string
 }
 
-const Fringe: FC<Props> = ({ orientation, className }) => {
-  return (
-    <div css={makeFringeCss(orientation)} className={className}>
-      <div className="triangle"></div>
-    </div>
-  )
-}
+const Fringe: FC<Props> = ({ orientation, className }) => (
+  <div css={makeFringeCss(orientation)} className={className}>
+    <div className="triangle" />
+  </div>
+)
 
 export default Fringe
 export type FringeProps = Props
