@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
+import React, { ButtonHTMLAttributes, FC } from 'react'
 import { buttonCss } from './styles'
 
-export type Props = {}
+export type Props = ButtonHTMLAttributes<any>
 
-const ClickButton: FC<Props> = ({}) => {
+const ClickButton: FC<Props> = props => {
   return (
-    <button type="button" css={buttonCss}>
+    <button type="button" {...props} css={buttonCss}>
       CLICK!
     </button>
   )

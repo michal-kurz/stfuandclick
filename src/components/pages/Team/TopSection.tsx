@@ -30,7 +30,7 @@ type Props = {
 
 const TopSection: FC<Props> = ({ teamName }) => {
   const location = useLocation()
-  console.log(location)
+
   return (
     <div css={wrapperCss}>
       <div css={headlineCss}>

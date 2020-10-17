@@ -1,26 +1,22 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { RouteComponentProps } from '@reach/router'
 
 import SEO from '../../seo'
-import { buttonWrapper, inputCss, inputWrapper, topStripCss } from './styles'
-import { recordClick } from '../../../requests'
+import { buttonWrapperCss, inputCss, inputWrapper, ribbonContainerCss, topStripCss } from './styles'
 import Layout from '../../layouts/MainLayout/Layout'
 import TopQuote from './TopQuote'
 import MainFrame from '../../bricks/MainFrame'
 import ClickButton from '../../bricks/ClickButton'
 import Input from '../../bricks/Input'
+import Ribbon from '../../bricks/Ribbon'
 
-type Props = RouteComponentProps
+type Props = RouteComponentProps & {
+  recordClick: () => void
+  teamName: string
+  setTeamName: (newName: string) => void
+}
 
-const Homepage: FC<Props> = () => {
-  useEffect(() => {
-    recordClick('Best team ever', `fdsoksrekfkfdk`)
-      .then(r => console.log('post: ', r.data))
-      .catch(alert)
-  }, [])
-
-  const [teamName, setTeamName] = useState('')
-
+const Homepage: FC<Props> = ({ recordClick, teamName, setTeamName }) => {
   return (
     <>
       <SEO title="Home" />
@@ -36,9 +32,12 @@ const Homepage: FC<Props> = () => {
                 placeholder="Your mom"
               />
             </div>
-            <div css={buttonWrapper}>
-              <ClickButton />
+            <div css={buttonWrapperCss}>
+              <ClickButton onClick={recordClick} />
             </div>
+          </div>
+          <div css={ribbonContainerCss}>
+            <Ribbon />
           </div>
         </MainFrame>
       </Layout>
@@ -47,3 +46,4 @@ const Homepage: FC<Props> = () => {
 }
 
 export default Homepage
+export type HomepageProps = Props

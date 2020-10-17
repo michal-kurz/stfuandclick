@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { LeaderboardRecord } from './types'
+import { Team } from './types'
 
-type ResponseData = LeaderboardRecord[]
+type ResponseData = Team[]
 
 const getUrl = () => `/leaderboard`
 

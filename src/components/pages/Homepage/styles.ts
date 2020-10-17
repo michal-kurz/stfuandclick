@@ -16,7 +16,7 @@ export const inputWrapper = css`
   justify-content: space-between;
 `
 
-export const buttonWrapper = css`
+export const buttonWrapperCss = css`
   width: 46%;
   height: 113px;
   padding: 20px 25px 22px;
@@ -24,4 +24,10 @@ export const buttonWrapper = css`
 
 export const inputCss = css`
   width: 100%;
+`
+
+export const ribbonContainerCss = css`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 `

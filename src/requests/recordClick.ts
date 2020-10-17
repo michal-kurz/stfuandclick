@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { TeamScore } from './types'
+import { ClickScore } from './types'
 
-type ResponseData = TeamScore
+type ResponseData = ClickScore
 
 const getUrl = () => `/klik`
 

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { clicksCss, rankCss, rowCss, teamNameCss } from './styles'
-import { LeaderboardRecord } from '../../../requests/types'
+import { Team } from '../../../requests/types'
 import { applyThousandsSeparator } from '../../../utils'
 
 export type Props = {
-  teamData: LeaderboardRecord
+  teamData: Team
   className?: string
 }
 

@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import { mainAreaCss, pageContentCss, pageWrapperCss, topSectionCss } from './styles'
-import TopRibbon from '../../bricks/TopRibbon'
+import TopStrip from '../../bricks/TopStrip'
 import Footer from '../../bricks/Footer'
 
 export type Props = {
@@ -10,7 +10,7 @@ export type Props = {
 const Layout: FC<Props> = ({ topSectionContent, children }) => {
   return (
     <div css={pageWrapperCss}>
-      <TopRibbon />
+      <TopStrip />
       <div css={pageContentCss}>
         <div css={topSectionCss}>{topSectionContent}</div>
         <div css={mainAreaCss}>
