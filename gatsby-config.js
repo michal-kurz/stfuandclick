@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/stfuandclick`,
   siteMetadata: {
     title: 'STFU and click!',
     description: "It's really simple, you just have to click as fast as you can!",
@@ -30,8 +31,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-emotion',
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
