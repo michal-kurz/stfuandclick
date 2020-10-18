@@ -1,15 +1,18 @@
 # STFU and click!
 
-> **This solution is not complete**, as the deployment is fucked! Routing only works when accessing the app via the `/app/` entry point - directly accessing a team URL results in a 404. As described [here](https://stackoverflow.com/questions/64412745/gatsby-dynamic-routing-breaks-upon-gh-pages-deploy). I will fix this some time in the future, when I can get to it. The app runs fine in dev environment, so feel free to checkout and `yarn develop`
+> **This solution is not complete**, as the deployment is broken, as routing only works when accessing the app via the `/app/` entry point - directly accessing a team URL results in a 404. As described [here](https://stackoverflow.com/questions/64412745/gatsby-dynamic-routing-breaks-upon-gh-pages-deploy). I will fix this some time in the future, when I can get to it. The app runs fine in dev environment, so feel free to checkout and `yarn develop`
 
-This is the solution to a clever test assignment by the amazing people from [Applifting](https://www.applifting.cz/).   
-The assignment itself can be found at [/assignment.pdf](file:///home/mp/Workspace/public-code-projects/stfuandclick/assignment.pdf).
+This is the solution to a clever test assignment by the amazing people from [Applifting](https://www.applifting.cz/)   
+The assignment itself can be found at [/assignment.pdf](assignment.pdf)
 
 The app is deployed here: https://michal-kurz.github.io/stfuandclick/app/  
 
 This is my first ever experiece with Gatsby
 
  ## Potential FAQ
+ ### Why is everything so big?
+ I accidentally made the whole thing while a zoomed-out in my browser. Please, just do the same when reviewing.
+ 
  ### Are you free for hire?
  I am currently working on a client's project and am extremely comfortable in our partnership - but I am  am open to new offers, as long as they are really awesome. 
 
