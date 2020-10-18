@@ -7,7 +7,7 @@ import { store } from '../store/configureStore'
 import theme from '../theming'
 import Homepage from '../components/pages/Homepage'
 import Team from '../components/pages/Team'
-import { BASE_URL } from '../utils'
+import { baseUrl } from '../utils'
 
 const App = () => (
   <>
@@ -15,8 +15,8 @@ const App = () => (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Router>
-          <Homepage path={`${BASE_URL}/app/`} />
-          <Team path={`${BASE_URL}/app/team/:teamName`} />
+          <Homepage path={`${baseUrl}/app/`} />
+          <Team path={`${baseUrl}/app/team/:teamName/`} />
         </Router>
       </ThemeProvider>
     </Provider>

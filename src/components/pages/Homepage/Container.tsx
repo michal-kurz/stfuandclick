@@ -10,7 +10,7 @@ export type ContainerProps = RouteComponentProps
 
 const Container: FC<ContainerProps> = () => {
   const dispatch = useDispatch()
-  const [teamName, setTeamName] = useState('')
+  const [teamName, setTeamName] = useState('test')
 
   const recordClick = async () => {
     await dispatch(GTC.recordClick({ teamName }))

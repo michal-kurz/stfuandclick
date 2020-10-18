@@ -1,5 +1,6 @@
 {
   "name": "stfu-and-click",
+  "engines" : { "node" : ">=0.12" },
   "private": true,
   "description": "A test assignment for Applifting",
   "version": "0.1.0",
