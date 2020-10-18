@@ -3,7 +3,7 @@ import { on } from 'ts-action-immer'
 import * as AC from './actionCreators'
 import { Team } from '../../requests/types'
 import { recordClick, undoClick } from '../_global/actionCreators'
-import { getTeamNamesByOrder, sortLeaderboard } from '../../utils/sorting'
+import { reSortLeaderboardUponClickDecrease, reSortLeaderboardUponClickIncrease } from '../../utils/sorting'
 
 export type TeamsByName = Record<string, Team>
 
@@ -41,49 +41,63 @@ const leaderboardReducer = reducer(
   }),
   on(recordClick, (state, action) => {
     const { teamName } = action.payload
+    const newItemOrder = state.teamNamesByOrder.length + 1 // best save value in advance, before manipulating the array
 
+    // Create the team, if not present
     if (!state.teamsByName[teamName]) {
-      state.teamNamesByOrder.push(teamName)
       state.teamsByName[teamName] = {
-        order: state.teamNamesByOrder.length + 1,
+        order: newItemOrder,
         team: teamName,
         clicks: 0,
       }
+      state.teamNamesByOrder.push(teamName)
     }
 
     state.teamsByName[teamName].clicks += 1
 
-    const sortedLeaderboard = sortLeaderboard(Object.values(state.teamsByName))
-    const teamNamesByOrder = getTeamNamesByOrder(sortedLeaderboard)
-    state.teamNamesByOrder = teamNamesByOrder
+    const [newTeamsByName, newTeamNamesByOrder] = reSortLeaderboardUponClickIncrease(
+      state.teamsByName,
+      state.teamNamesByOrder,
+      state.teamsByName[teamName],
+    )
 
-    teamNamesByOrder.forEach((name, index) => {
-      state.teamsByName[name].order = index + 1
-    })
+    state.teamNamesByOrder = newTeamNamesByOrder
+    state.teamsByName = newTeamsByName
+
+    // This is a much more straight-forward way of sorting, but sorts the whole board on
+    // each click, which sucks, since boards can get long and clicks may happen many times a second
+
+    // const sortedLeaderboard = sortLeaderboard(Object.values(state.teamsByName))
+    // const teamNamesByOrder = getTeamNamesByOrder(sortedLeaderboard)
+    // state.teamNamesByOrder = teamNamesByOrder
+    // teamNamesByOrder.forEach((name, index) => {
+    //   state.teamsByName[name].order = index + 1
+    // })
   }),
   on(undoClick, (state, action) => {
     const { teamName } = action.payload
+    const newItemOrder = state.teamNamesByOrder.length + 1 // best save value in advance, before manipulating the array
 
-    // Not really a concern rn, but why not...
+    // Can't really happen rn, but why not...
     if (!state.teamsByName[teamName]) {
-      state.teamNamesByOrder.push(teamName)
       state.teamsByName[teamName] = {
-        order: state.teamNamesByOrder.length + 1,
+        order: newItemOrder,
         team: teamName,
         clicks: 0,
       }
-      return
+      state.teamNamesByOrder.push(teamName)
     }
 
     state.teamsByName[teamName].clicks -= 1
 
-    const sortedLeaderboard = sortLeaderboard(Object.values(state.teamsByName))
-    const teamNamesByOrder = getTeamNamesByOrder(sortedLeaderboard)
-    state.teamNamesByOrder = teamNamesByOrder
+    const [newTeamsByName, newTeamNamesByOrder] = reSortLeaderboardUponClickDecrease(
+      state.teamsByName,
+      state.teamNamesByOrder,
+      state.teamsByName[teamName],
+    )
 
-    teamNamesByOrder.forEach((name, index) => {
-      state.teamsByName[name].order = index + 1
-    })
+    state.teamNamesByOrder = newTeamNamesByOrder
+    state.teamsByName = newTeamsByName
   }),
 )
 
