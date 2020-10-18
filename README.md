@@ -11,7 +11,10 @@ This is my first ever experiece with Gatsby
 
  ## Potential FAQ
  ### Why is everything so big?
- I accidentally made the whole thing while a zoomed-out in my browser. Please, just do the same when reviewing.
+ I accidentally made the whole thing while zoomed-out in my browser. Please, just do the same when reviewing.
+ 
+ ### Why the redundant index.ts files?
+ I like to organize my code like this - I include an index file for every component, which serves as the interface for the rest of the project. All code exported from the component should be wired through this file. This often results in "redundant" files that only reexport one single component. I think it's not that uncommon of an approach, but [U+](https://u.plus/) was quite surprised about it, so here you go.   
  
  ### Are you free for hire?
  I am currently working on a client's project and am extremely comfortable in our partnership - but I am  am open to new offers, as long as they are really awesome. 
