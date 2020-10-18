@@ -1,4 +1,5 @@
 import { css } from '@emotion/core'
+import { ThemedCssCreator } from '../../../theming'
 
 export const topStripCss = css`
   display: flex;
@@ -20,6 +21,12 @@ export const buttonWrapperCss = css`
   width: 46%;
   height: 113px;
   padding: 20px 25px 22px;
+`
+
+export const getBtnCss = (disabled: boolean): ThemedCssCreator => css`
+  ${disabled && 'opacity: 40%'};
+  ${disabled && 'cursor: default'};
+  transition: all 0.3s ease-in-out;
 `
 
 export const inputCss = css`
