@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: '/stfuandclick',
   siteMetadata: {
     title: 'STFU and click!',
     description: "It's really simple, you just have to click as fast as you can!",
