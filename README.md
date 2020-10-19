@@ -1,6 +1,6 @@
 # STFU and click!
 
-> **This solution is not complete**, as the deployment is broken, as routing only works when accessing the app via the `/app/` entry point - directly accessing a team URL results in a 404. As described [here](https://stackoverflow.com/questions/64412745/gatsby-dynamic-routing-breaks-upon-gh-pages-deploy). I will fix this some time in the future, when I can get to it. The app runs fine in dev environment, so feel free to checkout and `yarn develop`
+> **This solution is not complete**, as the deployment is broken, as routing only works when accessing the app via the `/app/` entry point - directly accessing a team URL results in a 404. As described [here](https://stackoverflow.com/questions/64412745/gatsby-dynamic-routing-breaks-upon-gh-pages-deploy). I will fix this some time in the future, when I can get to it. The app runs fine in dev environment, so feel free to clone and `yarn develop`
 
 This is the solution to a clever test assignment by the amazing people from [Applifting](https://www.applifting.cz/)   
 The assignment itself can be found at [/assignment.pdf](assignment.pdf)
