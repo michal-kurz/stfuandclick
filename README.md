@@ -19,4 +19,3 @@ This is my first ever experiece with Gatsby
  ### Why are you passing anonymous function/literals as props?
  I've used to be very conscious about maintaining the reference-continuity of all props - combined with the preemptive use of React.memo, as I was led to do by me peers at SiteOne - but I have changed my mind since, and no longer believe it's worth doing preemptively. I changed it based on [this article](https://kentcdodds.com/blog/usememo-and-usecallback) and conversations with much better and more experienced React developers than I am. I nowadays only memoize when I have a specific reason (reselect selector input / a hook dependency array / creating a component inside another one / actual performance issues caused by too much rerendering). 
   
-  -
