@@ -16,7 +16,7 @@ type Props = {
 const Team: FC<Props> = ({ teamName, recordClick }) => (
   <>
     <SEO title={teamName ?? 'The nameless team q:^)'} />
-    <Layout topSectionContent={<TopSection teamName={teamName} />}>
+    <Layout topSectionContent={<TopSection teamName={teamName} key="Team" />}>
       <MainFrame teamName={teamName}>
         <div css={buttonContainerCss}>
           <ClickButton onClick={recordClick} />
