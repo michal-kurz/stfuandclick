@@ -15,8 +15,8 @@ const App = () => (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Router>
-          <Homepage path={`${baseUrl}/app/`} />
           <Team path={`${baseUrl}/app/team/:teamName/`} />
+          <Homepage path={`${baseUrl}/app/`} default />
         </Router>
       </ThemeProvider>
     </Provider>
