@@ -2,7 +2,14 @@ import React, { FC } from 'react'
 import { RouteComponentProps } from '@reach/router'
 
 import SEO from '../../seo'
-import { buttonWrapperCss, getBtnCss, inputCss, inputWrapper, ribbonContainerCss, topStripCss } from './styles'
+import {
+  buttonWrapperCss,
+  getBtnCss,
+  inputCss,
+  inputWrapper,
+  ribbonContainerCss,
+  topStripCss,
+} from './styles'
 import Layout from '../../layouts/MainLayout/Layout'
 import TopQuote from './TopQuote'
 import MainFrame from '../../bricks/MainFrame'
@@ -22,7 +29,7 @@ const Homepage: FC<Props> = ({ recordClick, teamName, setTeamName }) => {
   return (
     <>
       <SEO title="Home" />
-      <Layout topSectionContent={<TopQuote />}>
+      <Layout topSectionContent={<TopQuote />} key="Homepage">
         <MainFrame>
           <div css={topStripCss}>
             <div css={inputWrapper}>
