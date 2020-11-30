@@ -1,3 +1,3 @@
-import Homepage from './Container'
+import Homepage from './Homepage'
 
 export default Homepage

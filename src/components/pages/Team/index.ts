@@ -1,3 +1,3 @@
-import Team from './Container'
+import Team from './Team'
 
 export default Team
