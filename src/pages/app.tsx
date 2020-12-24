@@ -11,7 +11,11 @@ const teamCss = css`
 `
 
 const AppPage: FC<RouteComponentProps> = () => <div css={[appCss, sharedCss]}>App</div>
-const TeamPage: FC<RouteComponentProps> = () => <div css={[teamCss, sharedCss]}>Team</div>
+const TeamPage: FC<RouteComponentProps> = () => (
+  <div>
+    <div css={[teamCss, sharedCss]}>Team</div>
+  </div>
+)
 
 const App = () => (
   <Router>
