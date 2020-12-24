@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
-import { RouteComponentProps } from '@reach/router'
+import { RouteComponentProps, useLocation } from '@reach/router'
 import Team from './Team'
 
 import * as GTC from '../../../store/_global/thunkCreators'
@@ -13,6 +13,7 @@ const Container: FC<ContainerProps> = ({ teamName = '' }) => {
   const dispatch = useDispatch()
 
   const recordClick = () => dispatch(GTC.recordClick({ teamName }))
+  console.log('TEAM >', useLocation().href)
 
   return <Team recordClick={recordClick} teamName={teamName} />
 }
