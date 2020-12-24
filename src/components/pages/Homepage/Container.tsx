@@ -18,7 +18,13 @@ const Container: FC<ContainerProps> = () => {
     navigate(teamUrl)
   }
 
-  return <Homepage recordClick={recordClick} teamName={teamName} setTeamName={setTeamName} />
+  // the outer div wrapper is a hack circumventing a bug in emotion
+  // https://stackoverflow.com/questions/65081032/gatsby-spa-deployed-on-netlify-applies-wrong-emotion-css-on-first-load-distille
+  return (
+    <div>
+      <Homepage recordClick={recordClick} teamName={teamName} setTeamName={setTeamName} />
+    </div>
+  )
 }
 
 export default Container
