@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { RouteComponentProps, useLocation } from '@reach/router'
 import Team from './Team'
@@ -14,6 +14,13 @@ const Container: FC<ContainerProps> = ({ teamName = '' }) => {
 
   const recordClick = () => dispatch(GTC.recordClick({ teamName }))
   console.log('TEAM >', useLocation().href)
+
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    setTimeout(() => setShow(true), 10)
+  }, [])
+
+  if (!show) return null
 
   return <Team recordClick={recordClick} teamName={teamName} />
 }
