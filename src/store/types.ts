@@ -9,3 +9,5 @@ export type RootState = ReturnType<typeof store.getState>
 export type ThunkCreator<Params, PromiseType = any> = (
   params: Params,
 ) => ThunkAction<Promise<PromiseType>, RootState, null, Action>
+
+export type ThunkDispatch = Parameters<ReturnType<ThunkCreator<any>>>[0]
