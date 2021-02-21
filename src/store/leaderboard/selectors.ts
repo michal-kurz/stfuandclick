@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect'
 import { RootState as RS } from '../types'
 import {
+  EMPTY_ARRAY,
   getIntRadiusWithinConstraints,
   LEADERBOARD_RADIUS,
   TOP_LEADERBOARD_LENGTH,
@@ -51,7 +52,7 @@ export const getLeaderboardForTeamName = createSelector(
         return teamsByName[teamNameAtPosition]
       })
     } catch (e) {
-      return [] // Jestli mě nepodrazí API, tak by se nemělo stát...
+      return EMPTY_ARRAY // Jestli mě nepodrazí API, tak by se nemělo stát...
     }
   },
 )

@@ -50,9 +50,8 @@ const leaderboardReducer = reducer(
     }
 
     state.teamsByName[teamName].clicks += 1
-    // Since I'm only displacing one team out of order, I can easily get away with re-sorting the
-    // whole leaderboard on every click, as long as I use insertion sort - this result in near 1n
-    // complexity (2n worst case)
+    // Since I'm only displacing one team out of order, I get a very nice performance boost using
+    // insertion sort I use insertion sort - this result in near 1n complexity (2n worst case)
     const comparator = makeCompareTeamsByName(state.teamsByName)
     state.teamNamesByOrder = insertionSort(state.teamNamesByOrder, comparator)
 
