@@ -1,5 +1,7 @@
 // Gets a number + size of radius, returns array of sorted ints within the radius
 // ie. (number = 7 & radius = 2) => [5,6,7,8,9]
+import { EMPTY_ARRAY } from './constants'
+
 export function getIntRadius(radius: number, int: number) {
   const totalIntervalSize = radius * 2 + 1
   const range = [...Array(totalIntervalSize).keys()] // [0, ..., (2*radius +1)]
@@ -17,7 +19,7 @@ export function getIntRadiusWithinConstraints(
   let int = _int
   const { min = 0, max = Infinity } = constraints || {}
 
-  if (max < min) return []
+  if (max < min) return EMPTY_ARRAY
 
   const lowestInRadius = int - radius
   const overflowLeft = min - lowestInRadius
