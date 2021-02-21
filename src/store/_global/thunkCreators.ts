@@ -14,6 +14,9 @@ type RecordClickParams = {
 
 type RecordClick = ThunkCreator<RecordClickParams>
 
+// I think that debounce results in better UX than throttle, because it eliminates the jitter
+// from reconciling stale responses (except for when user stops clicking, but that one feels OK
+// to me) as I rarely sort teams with the same click count the same way BE does
 const refetchLeaderboardDebounced = _debounce(
   (dispatch: ThunkDispatch, myTeamName: string) => dispatch(fetchLeaderboard({ myTeamName })),
   LEADERBOARD_REFETCH_DEBOUNCE_MS,
