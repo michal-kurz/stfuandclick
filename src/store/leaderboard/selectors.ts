@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect'
 import { RootState as RS } from '../types'
-import { getIntRadiusWithinConstraints } from '../../utils'
+import {
+  getIntRadiusWithinConstraints,
+  LEADERBOARD_RADIUS,
+  TOP_LEADERBOARD_LENGTH,
+} from '../../utils'
 
 export const getLeaderboardSlice = (s: RS) => s.leaderboard
 export const getIsLeaderboardFetching = (s: RS) => getLeaderboardSlice(s).isFetching
@@ -12,19 +16,32 @@ export type LeaderboardSelectionConfig = {
   radius: number
 }
 
-const passConfig = (s: RS, config: LeaderboardSelectionConfig) => config
+const passTeamName = (s: RS, teamName: string) => teamName
+
+// Since I'm only ever looking up my own team, using makeGet pattern would be counterproductive
+// (it would recompute the selector once per instance, instead of once period)
+export const getMyTeamPosition = createSelector(
+  getTeamNamesByOrder,
+  passTeamName, // I <3 PRETTIER
+  (namesByOrder, teamName) => {
+    const index = namesByOrder.findIndex(name => name === teamName)
+    if (index === -1) return null
+    return index + 1
+  },
+)
+
 export const getLeaderboardForTeamName = createSelector(
   getTeamsByName,
   getTeamNamesByOrder,
-  passConfig,
-  (teamsByName, teamNamesByOrder, config) => {
+  getMyTeamPosition,
+  (teamsByName, teamNamesByOrder, teamPosition) => {
+    if (teamPosition === null) {
+      const teamNamesToDisplay = teamNamesByOrder.slice(0, TOP_LEADERBOARD_LENGTH)
+      return teamNamesToDisplay.map(name => teamsByName[name])
+    }
+
     try {
-      const { radius, teamName } = config
-
-      if (teamName === null) return []
-
-      const teamOrder = teamsByName[teamName].order
-      const positionsToDisplay = getIntRadiusWithinConstraints(radius, teamOrder, {
+      const positionsToDisplay = getIntRadiusWithinConstraints(LEADERBOARD_RADIUS, teamPosition, {
         min: 1,
         max: teamNamesByOrder.length,
       })
@@ -34,8 +51,7 @@ export const getLeaderboardForTeamName = createSelector(
         return teamsByName[teamNameAtPosition]
       })
     } catch (e) {
-      // Jestli mě nepodrazí API, tak by se nemělo stát...
-      return []
+      return [] // Jestli mě nepodrazí API, tak by se nemělo stát...
     }
   },
 )
@@ -43,14 +59,3 @@ export const getLeaderboardForTeamName = createSelector(
 export const getTeamClicks = (s: RS, teamName: string): number | undefined => {
   return getTeamsByName(s)[teamName]?.clicks
 }
-
-const passNumber = (s: RS, n: number) => n
-export const getTopOfLeaderboard = createSelector(
-  getTeamsByName,
-  getTeamNamesByOrder,
-  passNumber,
-  (teamsByName, teamNamesByOrder, numberOfEntries) => {
-    const teamNamesToDisplay = teamNamesByOrder.slice(0, numberOfEntries)
-    return teamNamesToDisplay.map(name => teamsByName[name])
-  },
-)

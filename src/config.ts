@@ -11,4 +11,4 @@ const applyConfig = () => {
 
 export default applyConfig
 
-export const CLICK_DEBOUNCE_TIMEOUT_MS = 1500
+export const LEADERBOARD_REFETCH_DEBOUNCE_MS = 1500
