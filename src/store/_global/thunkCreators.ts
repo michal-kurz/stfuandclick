@@ -6,7 +6,7 @@ import { handleRequestError, ReqErr } from '../../utils'
 import { getSessionString } from '../session/selectors'
 import { ClickScore } from '../../requests/types'
 import { fetchLeaderboard } from '../leaderboard/thunkCreators'
-import { CLICK_DEBOUNCE_TIMEOUT_MS } from '../../config'
+import { LEADERBOARD_REFETCH_DEBOUNCE_MS } from '../../config'
 
 type RecordClickParams = {
   teamName: string
@@ -16,7 +16,7 @@ type RecordClick = ThunkCreator<RecordClickParams>
 
 const refetchLeaderboardDebounced = _debounce(
   (dispatch: ThunkDispatch, myTeamName: string) => dispatch(fetchLeaderboard({ myTeamName })),
-  CLICK_DEBOUNCE_TIMEOUT_MS,
+  LEADERBOARD_REFETCH_DEBOUNCE_MS,
 )
 
 // eslint-disable-next-line import/prefer-default-export

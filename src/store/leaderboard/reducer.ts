@@ -4,12 +4,15 @@ import _mapKeys from 'lodash/mapKeys'
 import * as AC from './actionCreators'
 import { Team } from '../../requests/types'
 import { recordClick, undoClick } from '../_global/actionCreators'
-import { reSortLeaderboardUponClickDecrease, reSortLeaderboardUponClickIncrease } from '../../utils/sorting'
+import { insertionSort } from '../../utils/sorting'
+import { createNewTeam, makeCompareTeamsByName } from './utils'
 
 export type TeamsByName = Record<string, Team>
 
 export type LeaderboardSlice = {
   teamsByName: TeamsByName
+  // I would usually demote this to a memoized selector (since it's deterministic from teamsByName),
+  // but I don't see a good way of doing that while using my insertion sort trick
   teamNamesByOrder: string[]
   isFetching: boolean
 }
@@ -38,63 +41,41 @@ const leaderboardReducer = reducer(
   }),
   on(recordClick, (state, action) => {
     const { teamName } = action.payload
-    const newItemOrder = state.teamNamesByOrder.length + 1 // best save value in advance, before manipulating the array
 
-    // Create the team, if not present
+    // If a team doesn't yet exist, create it
     if (!state.teamsByName[teamName]) {
-      state.teamsByName[teamName] = {
-        order: newItemOrder,
-        team: teamName,
-        clicks: 0,
-      }
+      const existingTeamCount = Object.keys(state.teamsByName).length
+      state.teamsByName[teamName] = createNewTeam(teamName, existingTeamCount + 1)
       state.teamNamesByOrder.push(teamName)
     }
 
     state.teamsByName[teamName].clicks += 1
+    // Since I'm only displacing one team out of order, I can easily get away with re-sorting the
+    // whole leaderboard on every click, as long as I use insertion sort - this result in near 1n
+    // complexity (2n worst case)
+    const comparator = makeCompareTeamsByName(state.teamsByName)
+    state.teamNamesByOrder = insertionSort(state.teamNamesByOrder, comparator)
 
-    const [newTeamsByName, newTeamNamesByOrder] = reSortLeaderboardUponClickIncrease(
-      state.teamsByName,
-      state.teamNamesByOrder,
-      state.teamsByName[teamName],
-    )
-
-    state.teamNamesByOrder = newTeamNamesByOrder
-    state.teamsByName = newTeamsByName
-
-    // This is a much more straight-forward way of sorting, but sorts the whole board on
-    // each click, which sucks, since boards can get long and clicks may happen many times a second
-
-    // const sortedLeaderboard = sortLeaderboard(Object.values(state.teamsByName))
-    // const teamNamesByOrder = getTeamNamesByOrder(sortedLeaderboard)
-    // state.teamNamesByOrder = teamNamesByOrder
-    // teamNamesByOrder.forEach((name, index) => {
-    //   state.teamsByName[name].order = index + 1
-    // })
+    // Do not worry about the order - just leave it at it's old value and sort the leaderboard based
+    // on clicks. Since I can't predict how server will order it relatively to other items with
+    // identical click count, I might as well leave it as it is and correct for the disparity once
+    // i re-fetch leaderboard from BE. I think this is fine and an excellent tradeoff that allows me
+    // to instantly react to user's clicks.
   }),
   on(undoClick, (state, action) => {
     const { teamName } = action.payload
-    const newItemOrder = state.teamNamesByOrder.length + 1 // best save value in advance, before manipulating the array
 
-    // Can't really happen rn, but why not...
+    // If a team doesn't yet exist, create it
     if (!state.teamsByName[teamName]) {
-      state.teamsByName[teamName] = {
-        order: newItemOrder,
-        team: teamName,
-        clicks: 0,
-      }
+      const existingTeamCount = Object.keys(state.teamsByName).length
+      state.teamsByName[teamName] = createNewTeam(teamName, existingTeamCount + 1)
       state.teamNamesByOrder.push(teamName)
     }
 
     state.teamsByName[teamName].clicks -= 1
 
-    const [newTeamsByName, newTeamNamesByOrder] = reSortLeaderboardUponClickDecrease(
-      state.teamsByName,
-      state.teamNamesByOrder,
-      state.teamsByName[teamName],
-    )
-
-    state.teamNamesByOrder = newTeamNamesByOrder
-    state.teamsByName = newTeamsByName
+    const comparator = makeCompareTeamsByName(state.teamsByName)
+    state.teamNamesByOrder = insertionSort(state.teamNamesByOrder, comparator)
   }),
 )
 
