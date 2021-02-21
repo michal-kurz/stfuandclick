@@ -11,4 +11,4 @@ const applyConfig = () => {
 
 export default applyConfig
 
-export const CLICK_THROTTLE_TIMEOUT_MS = 350
+export const CLICK_DEBOUNCE_TIMEOUT_MS = 1500

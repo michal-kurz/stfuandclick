@@ -10,7 +10,7 @@ type Props = {
 const Container: FC<Props> = ({ teamName }) => {
   const [data, isFetching] = useLeaderboardData(teamName ?? null)
 
-  useFetchData()
+  useFetchData(teamName)
 
   const isLoading = isFetching && data.length === 0
 

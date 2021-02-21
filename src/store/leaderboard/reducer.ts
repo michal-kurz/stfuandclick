@@ -1,5 +1,6 @@
 import { reducer } from 'ts-action'
 import { on } from 'ts-action-immer'
+import _mapKeys from 'lodash/mapKeys'
 import * as AC from './actionCreators'
 import { Team } from '../../requests/types'
 import { recordClick, undoClick } from '../_global/actionCreators'
@@ -27,11 +28,7 @@ const leaderboardReducer = reducer(
   on(AC.getLeaderboardSuccess, (state, action) => {
     const { leaderboard } = action.payload
 
-    state.teamsByName = leaderboard.reduce((acc, curr) => {
-      acc[curr.team] = curr
-      return acc
-    }, {} as TeamsByName)
-
+    state.teamsByName = _mapKeys(leaderboard, val => val.team)
     state.teamNamesByOrder = leaderboard.map(({ team }) => team)
 
     state.isFetching = false

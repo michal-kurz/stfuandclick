@@ -1,4 +1,4 @@
-import _throttle from 'lodash/throttle'
+import _debounce from 'lodash/debounce'
 import { ThunkCreator, ThunkDispatch } from '../types'
 import * as AC from './actionCreators'
 import * as R from '../../requests/recordClick'
@@ -6,7 +6,7 @@ import { handleRequestError, ReqErr } from '../../utils'
 import { getSessionString } from '../session/selectors'
 import { ClickScore } from '../../requests/types'
 import { fetchLeaderboard } from '../leaderboard/thunkCreators'
-import { CLICK_THROTTLE_TIMEOUT_MS } from '../../config'
+import { CLICK_DEBOUNCE_TIMEOUT_MS } from '../../config'
 
 type RecordClickParams = {
   teamName: string
@@ -14,9 +14,9 @@ type RecordClickParams = {
 
 type RecordClick = ThunkCreator<RecordClickParams>
 
-const refetchLeaderboardThrottled = _throttle(
-  (dispatch: ThunkDispatch) => dispatch(fetchLeaderboard()),
-  CLICK_THROTTLE_TIMEOUT_MS,
+const refetchLeaderboardDebounced = _debounce(
+  (dispatch: ThunkDispatch, myTeamName: string) => dispatch(fetchLeaderboard({ myTeamName })),
+  CLICK_DEBOUNCE_TIMEOUT_MS,
 )
 
 // eslint-disable-next-line import/prefer-default-export
@@ -32,7 +32,7 @@ export const recordClick: RecordClick = ({ teamName }) => (dispatch, getState) =
     }
 
     await R.recordClick(teamName, sessionString)
-      .then(() => refetchLeaderboardThrottled(dispatch))
+      .then(() => refetchLeaderboardDebounced(dispatch, teamName))
       .catch(onError)
   })
 }
